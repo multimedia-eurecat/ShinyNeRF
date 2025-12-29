@@ -1,0 +1,1942 @@
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dnerf {
+  font-variant: small-caps;
+}
+
+.teaser .hero-body {
+  padding-top: 0;
+  padding-bottom: 3rem;
+}
+
+.hero--tight .hero-body {
+  padding-bottom: 1rem !important;
+}
+
+.teaser {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Responsive main title */
+.title.is-1.publication-title {
+  /* Fluid: min 1.9rem, max 3rem, scales with viewport width */
+  font-size: clamp(1.9rem, 3vw + 1rem, 3rem);
+  line-height: 1.15;
+}
+
+/* Optional: give the title some horizontal padding on small screens */
+@media (max-width: 768px) {
+  .title.is-1.publication-title {
+    padding: 0 0.75rem;
+  }
+}
+
+.publication-banner {
+  max-height: parent;
+}
+
+.publication-banner video {
+  position: relative;
+  left: auto;
+  top: auto;
+  transform: none;
+  object-fit: fit;
+}
+
+.publication-header .hero-body {
+}
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-venue {
+  color: #555;
+  width: fit-content;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.publication-body img {
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+.interpolation-panel {
+  background: #f5f5f5;
+  border-radius: 10px;
+}
+
+.interpolation-panel .interpolation-image {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.interpolation-video-column {
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+.interpolation-panel .slider {
+  margin: 0 !important;
+}
+
+#interpolation-image-wrapper {
+  width: 100%;
+}
+
+#interpolation-image-wrapper img {
+  border-radius: 5px;
+}
+
+/* Tighten the gallery section top space */
+.nerf-no-top {
+  padding-top: 0 !important;
+}
+
+/* Just in case: ensure the buttons block has no bottom margin */
+.publication-links {
+  margin-bottom: 0 !important;
+}
+
+/* Gallery container: center and limit width */
+.nerf-gallery {
+  max-width: 880px;
+  margin-inline: auto;
+}
+
+/* Responsive four-image grid */
+.nerf-four-grid {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+/* Card + caption styling */
+.nerf-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.nerf-cell img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* Captions with consistent height so cards align nicely */
+.nerf-caption {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+/* Make every caption occupy the same space */
+.nerf-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.nerf-caption {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  min-height: 2.4em;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+@media (max-width: 900px) {
+  .nerf-caption {
+    min-height: 2.8em;
+  }
+}
+
+.nerf-link {
+  display: block;
+  line-height: 0;
+}
+
+.nerf-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.nerf-link:focus-visible {
+  outline: 2px solid #3273dc;
+  outline-offset: 4px;
+}
+
+.nerf-link:hover img {
+  transform: scale(1.02);
+  transition: transform 0.15s ease;
+}
+
+/* Container that clips the zoomed image */
+.zoom-container {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Image that will be zoomed */
+.zoom-sync {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.08s ease-out, transform-origin 0.08s ease-out;
+  transform-origin: center center;
+  transform: scale(1);
+}
+
+/* Make teaser images smaller on tablets/phones */
+@media (max-width: 768px) {
+  .nerf-four-grid .nerf-cell img {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+/* ============================
+   TEASER (4 images strip)
+   ============================ */
+
+/* Desktop and up: slightly smaller teaser images */
+.section.nerf-no-top .nerf-cell img {
+  width: 80%;
+  max-width: 260px;
+  margin: 0 auto;
+}
+
+/* Tablets / phones: even smaller */
+@media (max-width: 768px) {
+  .section.nerf-no-top .nerf-cell img {
+    width: 70%;
+    max-width: 220px;
+  }
+}
+
+/* Very small phones: keep them compact but readable */
+@media (max-width: 480px) {
+  .section.nerf-no-top .nerf-cell img {
+    width: 70%;
+    max-width: 240px;
+  }
+}
+
+/* ============================
+   ARCHITECTURE FIGURE
+   ============================ */
+
+/* Desktop: make it clearly bigger than 60% */
+img[alt="architecture"] {
+  max-width: 60% !important;
+  height: auto;
+}
+
+/* Mobile: make it larger */
+@media (max-width: 768px) {
+  img[alt="architecture"] {
+    max-width: 90% !important;
+    height: auto;
+  }
+}
+
+/* ============================
+   LOGO GRID (top hero section)
+   ============================ */
+
+/* Desktop: 3 logos in a single row, using grid */
+.hero .logos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+/* Mobile: 2 logos on top, 1 centered below, all same size with % */
+@media (max-width: 768px) {
+  .hero .logos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3px;
+  }
+
+  .hero .logos-grid .nerf-cell {
+    flex: 0 0 45%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero .logos-grid .nerf-link img {
+    width: 90%;
+    height: auto;
+    display: block;
+  }
+}
+
+/* Base button sizing for the top links */
+.publication-links .button {
+  font-size: 0.95rem;
+  padding-inline: 0.9rem;
+}
+
+/* Medium / small screens */
+@media (max-width: 768px) {
+  .publication-links .button {
+    font-size: 0.9rem;
+    padding-inline: 0.8rem;
+  }
+
+  .publication-links .link-block {
+    display: inline-block;
+    margin: 0.25rem 0.25rem;
+  }
+}
+
+/* Very small phones: stack buttons, full width */
+@media (max-width: 480px) {
+  .publication-links {
+    text-align: center;
+  }
+
+  .publication-links .link-block {
+    display: block;
+    width: 100%;
+  }
+
+  .publication-links .button {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.85rem;
+    padding-inline: 0.7rem;
+  }
+}
+
+/* Responsive main title (duplicate, but fine) */
+.title.is-1.publication-title {
+  font-size: clamp(1.9rem, 3vw + 1rem, 3rem);
+  line-height: 1.15;
+}
+
+/* Base: keep buttons compact (duplicate, will be overridden below) */
+.publication-links .button {
+  font-size: 0.95rem;
+  padding-inline: 0.9rem;
+}
+
+/* Small screens: 2x2 grid, buttons only as wide as content */
+@media (max-width: 768px) {
+  .publication-links {
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    gap: 0.5rem 0.75rem;
+  }
+
+  .publication-links .link-block {
+    display: block;
+  }
+
+  .publication-links .button {
+    font-size: 0.9rem;
+    padding-inline: 0.6rem;
+    white-space: nowrap;
+  }
+}
+
+/* Very small phones: slightly smaller text, still 2x2 */
+@media (max-width: 480px) {
+  .publication-links .button {
+    font-size: 0.85rem;
+    padding-inline: 0.5rem;
+  }
+}
+
+/* Default (desktop-ish) */
+.publication-authors.is-size-5 {
+  font-size: 1.1rem;
+}
+
+/* Tablets / small laptops */
+@media (max-width: 1024px) {
+  .publication-authors.is-size-5 {
+    font-size: 1rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 768px) {
+  .publication-authors.is-size-5 {
+    font-size: 0.95rem;
+  }
+}
+
+/* Very small phones */
+@media (max-width: 480px) {
+  .publication-authors.is-size-5 {
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================
+   Comparing methods grid
+   ============================ */
+
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.comparison-column {
+  text-align: center;
+}
+
+.comparison-header {
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+  line-height: 1.2;
+}
+
+.comparison-cell {
+  margin-bottom: 0.6rem;
+  cursor: pointer;
+}
+
+/* Make sure zoom-container fills the cell */
+.comparison-cell .zoom-container {
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+/* Desktop: images at normal size; JS will handle scale */
+.comparison-cell .zoom-sync {
+  width: 100%;
+}
+
+/* Medium screens: 3 columns */
+@media (max-width: 1024px) {
+  .comparison-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* Small screens: 2 columns, smaller images */
+@media (max-width: 768px) {
+  .comparison-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .comparison-header {
+    font-size: 0.85rem;
+  }
+
+  .comparison-cell .zoom-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .comparison-cell .zoom-sync {
+    width: 80%;
+    transform: none !important;
+  }
+}
+
+/* Very small screens: 1 column, even smaller images */
+@media (max-width: 480px) {
+  .comparison-grid {
+    grid-template-columns: 1fr;
+    max-width: 360px;
+    margin: 0 auto;
+  }
+
+  .comparison-header {
+    font-size: 0.8rem;
+  }
+
+  .comparison-cell .zoom-sync {
+    width: 70%;
+  }
+}
+
+/* ============================
+   Zoom Modal
+   ============================ */
+
+.comparison-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.comparison-modal.is-active {
+  display: flex;
+}
+
+.comparison-modal-backdrop {
+  position: absolute;
+  inset: 0;
+}
+
+.comparison-modal-content {
+  position: relative;
+  max-width: 95vw;
+  max-height: 90vh;
+  background: #111;
+  padding: 0.5rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#comparison-modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  height: auto;
+  width: auto;
+  display: block;
+}
+
+.comparison-modal-caption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #eee;
+  text-align: center;
+}
+
+.comparison-modal-close {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.3rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+/* ======================================
+   Zoom interaction hint (always visible)
+   ====================================== */
+
+#zoom-compare .zoom-container,
+.comparison-grid .zoom-container {
+  position: relative;
+}
+
+/* Base style: pill in bottom-right corner */
+#zoom-compare .zoom-container::after,
+.comparison-grid .zoom-container::after {
+  content: "";
+  position: absolute;
+  right: 6px;
+  bottom: 6px;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  font-size: 0.65rem;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0.9;
+  z-index: 2;
+}
+
+/* Desktop / mouse devices → "Hover to zoom" */
+@media (hover: hover) and (pointer: fine) {
+  #zoom-compare .zoom-container::after,
+  .comparison-grid .zoom-container::after {
+    content: "Hover to zoom";
+  }
+}
+
+/* Touch / coarse pointer devices → "Tap to zoom" */
+@media (hover: none), (pointer: coarse) {
+  #zoom-compare .zoom-container::after,
+  .comparison-grid .zoom-container::after {
+    content: "Tap to zoom";
+  }
+}
+
+/* Slightly smaller on very narrow screens */
+@media (max-width: 480px) {
+  #zoom-compare .zoom-container::after,
+  .comparison-grid .zoom-container::after {
+    font-size: 0.6rem;
+    padding: 0.1rem 0.4rem;
+  }
+}
+
+/* Make the Comparing methods container wider on desktop
+   so each of the 5 columns (and thus images) is larger */
+@media (min-width: 1024px) {
+  .hero.is-light.is-small .container.is-max-desktop {
+    max-width: 1200px;
+  }
+}
+
+/* ============================
+   Parameter explorer (sliders + image)
+   ============================ */
+
+.param-explorer {
+  display: flex;
+  gap: 1.5rem;
+  align-items: stretch;
+  margin-top: 1.5rem;
+}
+
+/* Left column: sliders */
+.param-controls {
+  flex: 0 0 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Each slider row */
+.param-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+/* Label + value on the same line */
+.param-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.param-label span:first-child {
+  margin-right: 0.5rem;
+}
+
+.param-value {
+  font-weight: 400;
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+/* Slider itself */
+.param-row input[type="range"] {
+  width: 100%;
+}
+
+/* Right column: image */
+.param-preview {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.param-preview figure {
+  margin: 0;
+  text-align: center;
+}
+
+.param-preview img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Responsive: stack on small screens */
+@media (max-width: 768px) {
+  .param-explorer {
+    flex-direction: column;
+  }
+
+  .param-controls {
+    flex: 0 0 auto;
+  }
+
+  .param-preview {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Desktop: make the explorer image larger */
+@media (min-width: 1024px) {
+  .param-preview img {
+    width: 480px;
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+/* Tablets / phones: keep it smaller and responsive */
+@media (max-width: 1023px) {
+  .param-preview img {
+    width: min(340px, 100%);
+    height: auto;
+  }
+}
+
+/* ============================
+   Parameter estimation panels
+   ============================ */
+
+/* Row that holds the two panels side by side */
+.param-matrix-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Each panel */
+.param-matrix {
+  position: relative;
+  width: 45%;
+  max-width: 420px;
+  margin: 0;
+}
+
+.param-matrix img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Common style for all overlay labels */
+.param-col-label,
+.param-row-label {
+  position: absolute;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: #222;
+  text-align: center;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* Column labels (top, above image) */
+.param-col-label {
+  top: 0;
+  transform: translate(-50%, -130%);
+}
+
+/* Adjust horizontally to match visual columns */
+.param-col-1 { left: 13%; }
+.param-col-2 { left: 37%; }
+.param-col-3 { left: 63%; }
+.param-col-4 { left: 87%; }
+
+/* Row labels (left) – vertical text, aligned nicely */
+.param-row-label {
+  top: 25%;
+  left: -1.3rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  transform: translateX(25%) translateY(-50%) rotate(-180deg);
+}
+
+/* Two rows: upper = Predicted, lower = GT */
+.param-row-1 { top: 28%; }
+.param-row-2 { top: 77%; }
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .param-col-label,
+  .param-row-label {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .param-matrix-row {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .param-matrix {
+    width: 100%;
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 480px) {
+  .param-col-label,
+  .param-row-label {
+    font-size: 0.65rem;
+  }
+}
+
+/* 4-video responsive grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+/* Slightly enlarge this section's container on desktop so videos can be wider */
+@media (min-width: 1024px) {
+  .video-section .container.is-max-desktop {
+    max-width: 1200px;
+  }
+}
+
+.video-cell {
+  text-align: center;
+}
+
+.video-cell video {
+  width: 100%;
+  display: block;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+/* Optional caption */
+.video-caption {
+  margin-top: 0.25rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+/* Tablet / phone: 2 × 2 layout */
+@media (max-width: 768px) {
+  .video-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem;
+  }
+
+  .video-caption {
+    font-size: 0.75rem;
+  }
+}
+
+/* =========================================================
+   NEW STYLE LAYER: hierarchy, nav, and visual refinements
+   ========================================================= */
+
+/* Accent and base typography overrides */
+:root {
+  --accent: #2563eb;
+}
+
+body {
+  font-family: 'Noto Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #111827;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Google Sans', 'Noto Sans', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.section .title {
+  margin-bottom: 1rem;
+}
+
+/* Hero styling */
+.hero.hero--tight {
+  background: linear-gradient(180deg, #f9fafb 0%, #ffffff 40%);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.hero--tight .hero-body {
+  padding-top: 2.5rem !important;
+  padding-bottom: 2rem !important;
+}
+
+.publication-title {
+  letter-spacing: 0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.project-tagline {
+  margin-top: 0.35rem;
+  color: #4b5563;
+  max-width: 40rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Sticky project nav */
+.project-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.project-nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.4rem 0.75rem;
+}
+
+.project-nav-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  color: #0f172a;
+}
+
+.project-nav-right {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+}
+
+.project-nav-link {
+  color: #4b5563;
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 0.15rem;
+}
+
+.project-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.15s ease-out;
+}
+
+.project-nav-link:hover {
+  color: #111827;
+}
+
+.project-nav-link:hover::after {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .project-nav-inner {
+    justify-content: center;
+  }
+  .project-nav-right {
+    display: none;
+  }
+}
+
+/* Links & buttons accent */
+a {
+  color: var(--accent);
+}
+
+a:hover {
+  color: #1d4ed8;
+}
+
+.publication-links {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.03);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  margin-top: 0.75rem;
+}
+
+.publication-links .button {
+  font-size: 0.95rem;
+  padding-inline: 0.9rem;
+}
+
+.publication-links .button.is-dark {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.publication-links .button.is-dark:hover {
+  filter: brightness(0.92);
+}
+
+@media (max-width: 768px) {
+  .publication-links {
+    justify-content: center;
+  }
+  .publication-links .button {
+    font-size: 0.9rem;
+    padding-inline: 0.7rem;
+  }
+}
+
+/* Abstract & contributions */
+.section .content.has-text-justified {
+  max-width: 56rem;
+  margin-inline: auto;
+  font-size: 0.95rem;
+}
+
+.key-contributions {
+  max-width: 52rem;
+  margin: 1rem auto 0;
+  padding-left: 1.2rem;
+  font-size: 0.92rem;
+}
+
+.key-contributions li {
+  margin-bottom: 0.2rem;
+}
+
+/* Teaser card */
+#teaser .container.is-max-desktop {
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+/* Video results card */
+.video-section {
+  background: #ffffff;
+}
+
+.video-section .container.is-max-desktop {
+  padding: 2rem 1.75rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.video-cell video {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* Comparing methods card */
+.hero.is-light.is-small {
+  background: #f3f4f6;
+}
+
+.comparison-grid {
+  padding: 1.25rem 1rem;
+  border-radius: 12px;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+}
+
+.comparison-header {
+  background: #f9fafb;
+  padding: 0.35rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid #e5e7eb;
+  font-size: 0.8rem;
+}
+
+/* Parameter estimation card + labels */
+#param-estimation .param-matrix-row {
+  margin-top: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+}
+
+.param-col-label,
+.param-row-label {
+  font-size: 0.72rem;
+  color: #374151;
+  background: rgba(249, 250, 251, 0.85);
+  padding: 0.1rem 0.35rem;
+  border-radius: 999px;
+}
+
+/* Explorer card + sliders */
+#explorer .param-explorer {
+  margin-top: 1.5rem;
+  padding: 1.5rem 1.75rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  background: #f9fafb;
+}
+
+.param-row input[type="range"] {
+  appearance: none;
+  height: 4px;
+  border-radius: 999px;
+  background: #e5e7eb;
+}
+
+.param-row input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.param-row input[type="range"]::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
+.param-label span:first-child {
+  color: #111827;
+}
+
+.param-value {
+  color: #4b5563;
+}
+
+
+/* License/footer */
+#license {
+  border-top: 1px solid #e5e7eb;
+  margin-top: 2rem;
+  padding-top: 2rem;
+}
+
+#license .content {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+
+/* =========================================
+   Tweaks: teaser spacing, video cropping,
+   parameter estimation headroom
+   ========================================= */
+
+/* 1) Teaser: give it more space under the hero */
+.nerf-no-top {
+  /* Previously set to 0; give it some breathing room now */
+  padding-top: 1.75rem !important;
+}
+
+/* 2) Video results: show full videos, no cropping */
+.video-cell video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;          /* overrides the earlier 4/3 ratio */
+  display: block;
+  border-radius: 6px;
+  object-fit: contain;         /* don't crop – show full frame */
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* 3) Parameter estimation: more room above column labels */
+#param-estimation .param-matrix-row {
+  /* keep existing side/bottom padding, just add extra on top */
+  padding-top: 2.5rem;
+}
+
+/* Move column labels a bit closer to the image
+   so they are not glued to the card edge */
+.param-col-label {
+  top: 0;
+  transform: translate(-50%, -115%);  /* was -130% */
+}
+
+/* Shift "Predicted" / "GT" row labels further to the left */
+.param-row-label {
+  left: -2.1rem;  /* more negative = further left; tweak to taste */
+  transform: translateX(50%) translateY(-50%) rotate(-180deg);
+}
+
+/* On very small screens, don’t push them too far off-screen */
+@media (max-width: 480px) {
+  .param-row-label {
+    left: -1.6rem;
+  }
+}
+
+/* =========================================
+   Mobile refinements (phones / small tablets)
+   ========================================= */
+
+/* 0) Keep your desired row-label transform + shift */
+.param-row-label {
+  left: -2.1rem;
+  transform: translateX(130%) translateY(-50%) rotate(-180deg);
+}
+
+/* Slightly less shift on very small phones so labels don't go off-screen */
+@media (max-width: 480px) {
+  .param-row-label {
+    left: -1.6rem;
+  }
+}
+
+/* 1) Teaser: more room below hero on small screens */
+@media (max-width: 768px) {
+  .nerf-no-top {
+    padding-top: 2.25rem !important; /* was tighter before */
+  }
+
+  /* Teaser and video card padding: slightly tighter so they don't feel huge */
+  #teaser .container.is-max-desktop,
+  .video-section .container.is-max-desktop {
+    padding: 1.25rem 1rem;
+    border-radius: 10px;
+  }
+
+  /* Slightly smaller section padding overall on phones */
+  .section {
+    padding-top: 2.25rem;
+    padding-bottom: 2.25rem;
+  }
+}
+
+/* 2) Video results: ensure full video is visible, no cropping */
+.video-cell video {
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;        /* overrides earlier 4/3 */
+  object-fit: contain;       /* show the entire frame */
+  display: block;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.12);
+}
+
+/* 3) Parameter estimation: extra headroom for column labels on phones */
+#param-estimation .param-matrix-row {
+  padding-top: 2.75rem;      /* more space above the images & labels */
+}
+
+/* On narrow phones, reduce side padding a bit so nothing feels cramped */
+@media (max-width: 480px) {
+  #param-estimation .param-matrix-row {
+    padding: 2.25rem 0.75rem 1.5rem;
+  }
+
+  /* Column labels slightly closer to the image (less “edge hugging”) */
+  .param-col-label {
+    transform: translate(-50%, -110%); /* was more negative before */
+  }
+}
+
+/* 4) Simplify the top action-links pill on phones */
+@media (max-width: 768px) {
+  .publication-links {
+    display: flex;              /* override grid/inline-flex */
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+    padding: 0.75rem 0;         /* remove pill-like padding */
+    border-radius: 0;           /* no rounded giant pill on mobile */
+    background: transparent;    /* remove grey background on small screens */
+    border: none;
+  }
+
+  .publication-links .button {
+    width: 100%;
+    justify-content: center;
+    font-size: 0.9rem;
+    padding-inline: 0.7rem;
+  }
+}
+
+/* 5) Make sure large images behave nicely on small screens */
+@media (max-width: 768px) {
+  /* Architecture figure: use full width of the phone, not oversized */
+  img[alt="architecture"] {
+    max-width: 100% !important;
+  }
+}
+
+/* 6) Comparison grid card: soften padding on very small phones */
+@media (max-width: 480px) {
+  .comparison-grid {
+    padding: 0.75rem 0.5rem;
+    border-radius: 10px;
+  }
+}
+
+/* =========================================
+   Fix: show nav links on phones
+   ========================================= */
+
+@media (max-width: 768px) {
+  /* Stack title and links vertically */
+  .project-nav-inner {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    padding: 0.35rem 0.75rem;
+  }
+
+  /* Make sure the links are visible again */
+  .project-nav-right {
+    display: flex;               /* override the earlier display:none */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .project-nav-link {
+    padding-bottom: 0.05rem;
+  }
+}
+
+/* =========================================
+   2) Parameter estimation labels:
+      remove background everywhere
+   ========================================= */
+
+.param-col-label,
+.param-row-label {
+  background: none !important;  /* remove pill/background */
+  padding: 0;                   /* no extra padding */
+  border-radius: 0;             /* no rounded pill shape */
+}
+
+/* =========================================
+   Phone layout: 2x2 grid for top links
+   ========================================= */
+
+@media (max-width: 768px) {
+  .publication-links {
+    display: grid;                             /* override flex/inline-flex */
+    grid-template-columns: repeat(2, 1fr);     /* 2 columns, equal width */
+    gap: 0.5rem 0.75rem;                       /* row / column gap */
+    padding: 0.5rem 0;                         /* no big pill padding */
+    border-radius: 0;                          /* remove pill shape */
+    background: transparent;                   /* no background on phone */
+    border: none;
+    justify-content: center;
+  }
+
+  .publication-links .link-block {
+    display: block;                            /* each grid cell */
+  }
+
+  .publication-links .button {
+    width: 100%;                               /* fill cell width */
+    justify-content: center;
+    font-size: 0.9rem;
+    padding-inline: 0.4rem;                    /* slightly tighter */
+    white-space: nowrap;                       /* keep label on one line */
+  }
+}
+
+/* =========================================
+   Make video results bigger on desktop
+   ========================================= */
+
+/* Larger container and slightly tighter gaps on bigger screens */
+
+
+/* =========================================
+   Video captions: mobile vs desktop behavior
+   ========================================= */
+
+/* Default: captions visible everywhere (phone behaviour) */
+#video-results .video-caption {
+  display: block;
+}
+
+/* On larger screens, hide captions in the SECOND video-grid
+   so only the "above" ones (first row) are shown */
+@media (min-width: 769px) {
+  #video-results .video-grid:nth-of-type(2) .video-caption {
+    display: none;
+  }
+}
+
+
+/* Default: captions visible everywhere (mobile behaviour) */
+#video-results .video-caption {
+  display: block;
+}
+
+/* On larger screens, hide captions in all video-grids except the first one.
+   That way only the "top" row acts as column headers. */
+@media (min-width: 769px) {
+  #video-results .video-grid:not(:first-of-type) .video-caption {
+    display: none;
+  }
+}
+
+/* Stronger visual separation for zoom rows */
+.video-grid-zoom {
+  position: relative;
+  margin-top: 1.25rem;               /* more vertical space */
+  padding: 1rem 0.75rem 0.75rem;     /* inner padding so the background shows */
+  border-radius: 12px;
+  background: #f3f4ff;               /* very light bluish tone (ties to accent) */
+  border: 1px solid #c7d2fe;
+}
+
+/* Small label in the corner: "Zoomed crop" */
+.video-grid-zoom::before {
+  content: "Zoomed crop";
+  position: absolute;
+  top: 0.35rem;
+  left: 0.9rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #4b5563;
+  opacity: 0.85;
+}
+
+/* Slightly adjust videos inside zoom rows so they feel like content in a card */
+.video-grid-zoom .video-cell video {
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.18);
+}
+
+/* Extra headroom for the "Zoomed crop" label on desktop */
+@media (min-width: 1024px) {
+  .video-grid-zoom {
+    padding-top: 2.4rem; /* was 1rem; gives the label a clear band above videos */
+  }
+}
+
+.related-work-list li {
+  margin-bottom: 0.35rem;
+}
+
+.related-inline {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.75rem;
+}
+
+.ref-sep {
+  color: #9ca3af;       /* subtle gray */
+  font-size: 0.9rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.site-footer {
+  border-top: 1px solid #e5e7eb;
+  background: #f9fafb;
+  padding: 1.5rem 1rem calc(1.5rem + env(safe-area-inset-bottom));
+}
+
+.site-footer .content {
+  font-size: 0.85rem;
+  color: #4b5563; /* darker than before so it doesn't “vanish” on phones */
+}
+
+@media (max-width: 768px) {
+  .site-footer .content {
+    font-size: 0.8rem;
+  }
+}
+/* Mobile: don't let the BibTeX code block trap vertical scrolling */
+@media (max-width: 768px) {
+  #BibTeX pre {
+    overflow-x: auto;
+    overflow-y: hidden;              /* critical: vertical scroll goes to the page */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Optional: wrap long BibTeX lines so you don't need to horizontal-scroll */
+  #BibTeX pre code {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+
+  /* Give a bit of extra space at the bottom for iOS browser UI */
+  body {
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
+  }
+}
+
+
+/* --- Polished dataset dropdown --- */
+.dataset-dropdown {
+  display: inline-block;
+}
+
+.dataset-dropdown .dropdown-menu {
+  /* wider menu, but not ridiculous */
+  min-width: 18rem;
+  width: 24rem;
+}
+
+.dataset-dropdown .dropdown-content {
+  padding: 0.5rem;
+  border-radius: 14px;
+
+  /* dark menu to match your dark buttons */
+  background: #121212;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+
+  /* smoother shadow than Bulma default */
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+}
+
+.dataset-dropdown .dataset-header {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: rgba(255, 255, 255, 0.70);
+}
+
+.dataset-dropdown .dropdown-divider {
+  background: rgba(255, 255, 255, 0.10);
+  margin: 0.25rem 0.5rem 0.5rem 0.5rem;
+}
+
+.dataset-dropdown .dataset-item {
+  border-radius: 12px;
+  padding: 0.75rem 0.75rem;
+  color: #ffffffeb;
+  line-height: 1.15;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.dataset-dropdown .dataset-item:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-1px);
+}
+
+.dataset-dropdown .dataset-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.dataset-dropdown .dataset-title {
+  font-weight: 600;
+  font-size: 0.98rem;
+}
+
+.dataset-dropdown .dataset-sub {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.68);
+}
+
+.dataset-dropdown .dataset-tag {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+
+.publication-links {
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Dataset dropdown: light (white) menu --- */
+.dataset-dropdown .dropdown-content {
+  padding: 0.5rem;
+  border-radius: 14px;
+
+  background: #fff;
+  border: 1px solid rgba(10, 10, 10, 0.10);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.12);
+}
+
+.dataset-dropdown .dataset-header {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: rgba(10, 10, 10, 0.55);
+}
+
+.dataset-dropdown .dropdown-divider {
+  background: rgba(10, 10, 10, 0.08);
+  margin: 0.25rem 0.5rem 0.5rem 0.5rem;
+}
+
+.dataset-dropdown .dataset-item {
+  border-radius: 12px;
+  padding: 0.75rem 0.75rem;
+  color: rgba(10, 10, 10, 0.92);
+  line-height: 1.15;
+  transition: background 120ms ease, transform 120ms ease;
+}
+
+.dataset-dropdown .dataset-item:hover {
+  background: rgba(10, 10, 10, 0.04);
+  transform: translateY(-1px);
+}
+
+.dataset-dropdown .dataset-sub {
+  margin-top: 0.25rem;
+  font-size: 0.85rem;
+  color: rgba(10, 10, 10, 0.60);
+}
+
+.dataset-dropdown .dataset-tag {
+  border-radius: 999px;
+  padding: 0.25rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  background: rgba(10, 10, 10, 0.06);
+  color: rgba(10, 10, 10, 0.75);
+  border: 1px solid rgba(10, 10, 10, 0.08);
+}
+
+.dataset-dropdown .button.is-dark .icon,
+.dataset-dropdown .button.is-dark span {
+  color: #fff;
+}
+
+/* Base: keep menu within viewport */
+.dataset-dropdown .dropdown-menu{
+  width: 26rem;
+  max-width: calc(100vw - 1.25rem);
+  min-width: 0;
+}
+
+.dataset-dropdown .dropdown-content{
+  max-height: 70vh;      /* prevents huge menus on phones */
+  overflow: auto;
+}
+
+/* Allow title + tag to wrap nicely */
+.dataset-dropdown .dataset-row{
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .5rem;
+  flex-wrap: wrap;       /* important on narrow screens */
+}
+
+.dataset-dropdown .dataset-title{
+  max-width: 100%;
+  word-break: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Clamp the long header (2 lines) */
+.dataset-dropdown .dataset-header{
+  white-space: normal;
+  line-height: 1.2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Mobile: center the dropdown menu under the button */
+@media (max-width: 768px){
+  .dataset-dropdown .dropdown-menu{
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: calc(100vw - 1.25rem);
+  }
+
+  .dataset-dropdown .dropdown-content{
+    padding: .4rem;
+    border-radius: 12px;
+  }
+
+  .dataset-dropdown .dataset-header{
+    font-size: .78rem;
+  }
+
+  .dataset-dropdown .dataset-one{
+    font-size: .82rem;
+  }
+
+  .dataset-dropdown .dataset-meta-tag{
+    font-size: .68rem;
+  }
+}
+
+/* Right-align the menu to the button (opens leftwards) */
+.dataset-dropdown.is-right .dropdown-menu{
+  left: auto;
+  right: 0;
+  width: 26rem;
+  max-width: calc(100vw - 1.25rem);
+}
+
+/* Make it usable on phones */
+@media (max-width: 768px){
+  .dataset-dropdown.is-right .dropdown-menu{
+    width: calc(100vw - 1.25rem);
+    right: 0;
+    left: auto;
+    transform: none; /* important if you previously used translateX */
+  }
+
+  .dataset-dropdown .dropdown-content{
+    max-height: 70vh;
+    overflow: auto;
+  }
+
+  .dataset-dropdown .dataset-row{
+    flex-wrap: wrap;
+  }
+
+  .dataset-dropdown .dataset-header{
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    white-space: normal;
+  }
+}
+/* Phones: keep a small margin from the viewport edge */
+@media (max-width: 480px){
+  .dataset-dropdown.is-right .dropdown-menu{
+    right: 0.5rem;                 /* shift a bit left from the edge */
+    width: calc(100vw - 1rem);     /* match the margin */
+  }
+}
+
+
+/* BibTeX copy button */
+.bibtex-block {
+  position: relative;
+}
+
+.bibtex-copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  z-index: 2;
+}
+
+.bibtex-copy-btn.is-success {
+  /* Bulma already styles .is-success; this keeps behavior consistent */
+}
+
+
+/* =========================================================
+   FIX: Dataset dropdown never goes off-screen (viewport safe)
+   Paste at END of CSS to override earlier dropdown rules
+   ========================================================= */
+
+.dataset-dropdown {
+  position: relative;
+}
+
+/* Keep the menu within the viewport width */
+.dataset-dropdown .dropdown-menu {
+  width: min(26rem, calc(100vw - 1rem));
+  max-width: calc(100vw - 1rem - env(safe-area-inset-left) - env(safe-area-inset-right));
+  min-width: 0;
+
+  /* you use is-right → keep it anchored to the trigger’s right edge */
+  left: auto !important;
+  right: 0 !important;
+
+  /* allow JS to nudge it horizontally when near edges */
+  transform: translateX(var(--dd-shift-x, 0px)) !important;
+}
+
+/* Scroll inside the menu instead of overflowing the screen */
+.dataset-dropdown .dropdown-content {
+  max-height: var(--dd-max-h, 70vh);
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Flip upward when needed */
+.dataset-dropdown.is-up .dropdown-menu {
+  top: auto !important;
+  bottom: 100% !important;
+  padding-bottom: 0.5rem;
+}
+
+/* If you ever add thumbnails/images inside the dropdown: never let them overflow */
+.dataset-dropdown .dropdown-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* =========================================================
+   Dataset dropdown on phones: center below the button
+   (override .is-right right-alignment rules)
+   ========================================================= */
+@media (max-width: 768px) {
+  .dataset-dropdown.is-right .dropdown-menu {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+
+    width: calc(100vw - 1.25rem);
+    max-width: calc(100vw - 1.25rem);
+  }
+}
+
+/* Extra-safe on very small phones: keep a little side margin */
+@media (max-width: 480px) {
+  .dataset-dropdown.is-right .dropdown-menu {
+    width: calc(100vw - 1rem);
+    max-width: calc(100vw - 1rem);
+  }
+}
+
+@media (max-width: 768px) {
+  .dataset-dropdown.is-right .dropdown-menu {
+    left: -78% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* =========================================================
+   Teaser: force 2×2 layout on phones
+   ========================================================= */
+
+@media (max-width: 768px) {
+  /* Only affect the teaser grid */
+  #teaser .nerf-four-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px; /* optional: slightly tighter to fit better */
+  }
+
+  /* Let images fill each grid cell (override your 70–80% width rules) */
+  #teaser .nerf-cell img {
+    width: 100% !important;
+    max-width: none !important;
+    margin: 0 !important;
+  }
+
+  /* Optional: keep captions compact so rows align nicely */
+  #teaser .nerf-caption {
+    min-height: 0;
+  }
+}
+
+/* Even very small phones: keep 2 columns */
+@media (max-width: 480px) {
+  #teaser .nerf-four-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 8px;
+  }
+}
+
+/* Teaser: force 2×2 on phones (no side effects elsewhere) */
+@media (max-width: 768px) {
+  #teaser .nerf-four-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+a.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

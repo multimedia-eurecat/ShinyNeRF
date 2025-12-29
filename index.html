@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="NeRF variant to model both isotropic and anisotropic specular reflections in a unified, physically-based framework.">
+  <meta name="keywords" content="ShinyNeRF, NeRF, specular reflections, anisotropic material properties, reflectance models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ShinyNeRF: Modeling Anisotropic Reflections in Neural Radiance Fields</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./images/favicon.png">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <script src="./static/js/event_handler.js"></script>
+  <script src="./static/js/dics.original.js"></script>
+  <script src="./static/js/zoom-compare.js"></script>
+  <script src="./static/js/slider.js"></script>
+</head>
+<body>
+
+<!-- Sticky project nav -->
+<nav class="project-nav">
+  <div class="container is-max-desktop project-nav-inner">
+    <div class="project-nav-left">
+      <a href="#top" class="project-nav-title">ShinyNeRF</a>
+    </div>
+    <div class="project-nav-right">
+      <a href="#abstract" class="project-nav-link">Abstract</a>
+      <a href="#video-results" class="project-nav-link">Video</a>
+      <a href="#comparison" class="project-nav-link">Results</a>
+      <a href="#explorer" class="project-nav-link">Explorer</a>
+      <a href="#related-work" class="project-nav-link">Related-work</a>
+      <a href="#BibTeX" class="project-nav-link">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero hero--tight" id="top">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            ShinyNeRF: Modeling Anisotropic Reflections in Neural Radiance Fields
+          </h1>
+
+          <p class="subtitle is-5 project-tagline">
+            A physically-based NeRF variant that jointly estimates geometry and anisotropic specular parameters
+            from multi-view images.
+          </p>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              Albert Barreiro<sup>1, 2</sup>,</span>
+            <span class="author-block">
+              Roger Marí<sup>1</sup>,</span>
+            <span class="author-block">
+              Rafael Redondo<sup>1</sup>,
+            </span>
+            <span class="author-block">
+              Gloria Haro<sup>2</sup>,
+            </span>
+            <span class="author-block">
+              Carles Bosch<sup>3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Eurecat, Centre Tecnològic de Catalunya,</span>
+            <span class="author-block"><sup>2</sup>Universitat Pompeu Fabra, </span>
+            <span class="author-block"><sup>3</sup>Universitat de Vic - UCC</span>
+          </div>
+
+          <div class="container is-max-desktop">
+            <div class="nerf-gallery">
+              <div class="nerf-four-grid logos-grid">
+                <figure class="nerf-cell">
+                  <figcaption class="nerf-caption">1</figcaption>
+                  <a class="nerf-link" href="https://eurecat.org/home/en/" target="_blank" rel="noopener">
+                    <img src="images/logos/eurecat.png" alt="Eurecat">
+                  </a>
+                </figure>
+
+                <figure class="nerf-cell">
+                  <figcaption class="nerf-caption">2</figcaption>
+                  <a class="nerf-link" href="https://www.upf.edu/en" target="_blank" rel="noopener">
+                    <img src="images/logos/UPF.png" alt="UPF">
+                  </a>
+                </figure>
+
+                <figure class="nerf-cell">
+                  <figcaption class="nerf-caption">3</figcaption>
+                  <a class="nerf-link" href="https://www.uvic.cat/en" target="_blank" rel="noopener">
+                    <img src="images/logos/UVIC.png" alt="UVic-UCC">
+                  </a>
+                </figure>
+              </div>
+            </div>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block link-block--data">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark js-external-btn">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper (coming soon)</span>
+                </a>
+              </span>
+              <span class="link-block link-block--data">
+                <a href="https://arxiv.org/abs/2512.21692"
+                   class="external-link button is-normal is-rounded is-dark js-external-btn">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block link-block--data">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark js-external-btn">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (coming soon)</span>
+                </a>
+              </span>
+              <!-- Dataset Dropdown (polished) -->
+              <span class="link-block link-block--data">
+                <div class="dropdown dataset-dropdown is-right" id="datasetDropdown">
+                  <div class="dropdown-trigger">
+                    <button
+                      class="button is-normal is-rounded is-dark"
+                      aria-haspopup="true"
+                      aria-controls="dataset-dropdown-menu"
+                      aria-expanded="false"
+                      type="button"
+                    >
+                      <span class="icon"><i class="far fa-images"></i></span>
+                      <span>Data</span>
+                      <span class="icon is-small"><i class="fas fa-angle-down" aria-hidden="true"></i></span>
+                    </button>
+                  </div>
+
+                  <div class="dropdown-menu" id="dataset-dropdown-menu" role="menu">
+                    <div class="dropdown-content">
+                      <div class="dropdown-item dataset-header" role="presentation">
+                        Datasets with normals, tangents, anisotropy &amp; roughness ground truth
+                      </div>
+                      <hr class="dropdown-divider" />
+
+                      <a class="dropdown-item dataset-item js-external-btn" href="https://zenodo.org/records/17954755?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6IjVlZDExNDA5LTExZjItNGY5Mi1hOTEwLTk1YzMxZTVkZDYwOCIsImRhdGEiOnt9LCJyYW5kb20iOiJjOGY5NDRkYzU4YzljZjQ5ODg1ZTQyMWRmNDYxY2YzMCJ9.waVVkxLtIQ0u0tHZaj4abVbxBSjPCMa3hSxuAyT41iqMk2CGiyDxseQk2unuHKCR41QXohiZGzRR7RTAu02g7w">
+                        <div class="dataset-row">
+                          <span class="dataset-title">Anisotropic Synthetic Dataset</span>
+                          <span class="tag dataset-tag">ASD</span>
+                        </div>
+                        <div class="dataset-one">Objects with pronounced specular reflections.</div>
+                        <div class="dataset-meta">
+                          <span class="tag dataset-meta-tag">270×270</span>
+                          <span class="tag dataset-meta-tag">Homogeneous reflectance</span>
+                        </div>
+                      </a>
+
+                      <a class="dropdown-item dataset-item js-external-btn" href="https://zenodo.org/records/17942969?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImQyN2FkNDEyLTVmOTMtNGJhYy04MjlhLTkwMzM1MzJmZjE0OCIsImRhdGEiOnt9LCJyYW5kb20iOiI3NjIxNTJjNDExNDNmNWMyZTcyYjllNzIyNWNiODA4YiJ9.T0Q2qB2v7BsxwdE2OMUBkjr2tV_C6_EjFKTnsSSpFr8klteA-cxvgn9nCUADRgi5OPvBVCBJRlnL88SLmwxnhw">
+                        <div class="dataset-row">
+                          <span class="dataset-title">Anisotropic Spheres</span>
+                          <span class="tag dataset-tag">ASPH</span>
+                        </div>
+                        <div class="dataset-one">Four spheres with different environment maps.</div>
+                        <div class="dataset-meta">
+                          <span class="tag dataset-meta-tag">270×270</span>
+                          <span class="tag dataset-meta-tag">Simple geometry</span>
+                        </div>
+                      </a>
+
+                      <a class="dropdown-item dataset-item js-external-btn" href="https://zenodo.org/records/17954888?token=eyJhbGciOiJIUzUxMiJ9.eyJpZCI6ImU0MWExZjJmLTU5MjQtNDAwNi05NzA4LWFhZWY0Y2M3OWEzZiIsImRhdGEiOnt9LCJyYW5kb20iOiJiZDhiMGU5MmQzNjdjNzYyMDhhZjE4MmNjYzlmMDZiNCJ9.Px3BSRBqfW4M9-UHUtnqTGErpqfOxvB4l37khJ4ZynZ3ewGGRAHlzbnE3v-ZkvNYay1gkITc_jE98wJKH4h1Ug">
+                        <div class="dataset-row">
+                          <span class="dataset-title">Cultural Heritage Anisotropic Objects</span>
+                          <span class="tag dataset-tag">CHAO</span>
+                        </div>
+                        <div class="dataset-one">Moroccan teapot and Swedish helmet.</div>
+                        <div class="dataset-meta">
+                          <span class="tag dataset-meta-tag">512×512</span>
+                          <span class="tag dataset-meta-tag">Complex geometry</span>
+                        </div>
+                      </a>
+
+                    </div>
+                  </div>
+                </div>
+              </span>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEASER (4 images) -->
+<section class="section nerf-no-top" id="teaser">
+  <div class="container is-max-desktop">
+    <div class="nerf-gallery">
+      <div class="nerf-four-grid">
+        <figure class="nerf-cell">
+          <figcaption class="nerf-caption">Reference view</figcaption>
+          <img src="images/teaser/teaser_v2_v2_1.png" alt="Reference view">
+        </figure>
+
+        <figure class="nerf-cell">
+          <figcaption class="nerf-caption">e &uarr;</figcaption>
+          <img src="images/teaser/teaser_v2_v2_2.png" alt="e up">
+        </figure>
+
+        <figure class="nerf-cell">
+          <figcaption class="nerf-caption">e &uarr;, &kappa; &darr;</figcaption>
+          <img src="images/teaser/teaser_v2_v2_3.png" alt="e up, kappa down">
+        </figure>
+
+        <figure class="nerf-cell">
+          <figcaption class="nerf-caption">e &uarr;, &kappa; &darr;, &phi; + <sup>&pi;</sup>/<sub>2</sub></figcaption>
+          <img src="images/teaser/teaser_v2_v2_4.png" alt="e up, kappa down, phi + pi/2">
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABSTRACT + ARCHITECTURE -->
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          Recent advances in digitization technologies have transformed the preservation and dissemination of cultural heritage.
+          In this vein, neural Radiance Fields (NeRF) have emerged as a leading technology for 3D digitization, delivering
+          representations with exceptional realism. However, <strong>existing methods struggle to model anisotropic specular surfaces</strong>
+          (like brushed metals). In this work, we introduce <strong>ShinyNeRF</strong>, a novel framework
+          <strong>capable of handling both isotropic and anisotropic reflections</strong>. Our method is capable to jointly estimate
+          surface normals, tangents, specular concentration, and anisotropy magnitudes of an Anisotropic Spherical Gaussian (ASG)
+          distribution, by learning an approximation of the outgoing radiance as an encoded set of isotropic von Mises-Fisher (vMF)
+          distributions. Experimental results show that ShinyNeRF <strong>achieves state-of-the-art performance</strong> and offers
+          <strong>plausible physical interpretations and editing</strong> compared to existing methods.
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Key contributions -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 1.5rem;">
+      <div class="column is-four-fifths">
+        <h3 class="title is-4">Contributions</h3>
+        <ul class="key-contributions has-text-left">
+          <li>Unified NeRF-style framework for both isotropic and anisotropic specular reflections.</li>
+          <li>Joint estimation of normals, tangents, anisotropy and concentration parameters via an ASG/vMF formulation.</li>
+          <li>Physically meaningful parameter maps enabling appearance analysis and editing.</li>
+        </ul>
+      </div>
+    </div>
+
+
+
+    <!-- Architecture figure -->
+    <div class="has-text-centered" style="margin-top: 1.5rem;">
+      <figure>
+        <img
+          src="images/architecture.png"
+          alt="architecture"
+          style="height: auto;">
+        <figcaption class="is-size-7 has-text-grey" style="margin-top: 0.5rem;">
+          Figure 1: Overview of the ShinyNeRF architecture.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+
+<!-- VIDEO RESULTS -->
+<section class="section video-section" id="video-results">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Video results</h2>
+
+    <!-- Helmet: full view -->
+    <div class="video-grid">
+      <div class="video-cell">
+        <p class="video-caption">GT</p>
+        <video
+          src="videos/helmet/gt.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+          loop
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">ShinyNeRF</p>
+        <video
+          src="videos/helmet/shinynerf.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">Spec-Gaussian</p>
+        <video
+          src="videos/helmet/specgaussian.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">AniSDF</p>
+        <video
+          src="videos/helmet/anisdf.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+    </div>
+
+    <!-- Helmet: zoomed crops -->
+    <div class="video-grid video-grid-zoom">
+      <div class="video-cell">
+        <p class="video-caption">GT (zoom)</p>
+        <video
+          src="videos/helmet/gt_zoom.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">ShinyNeRF (zoom)</p>
+        <video
+          src="videos/helmet/shinynerf_zoom.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">Spec-Gaussian (zoom)</p>
+        <video
+          src="videos/helmet/specgaussian_zoom.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">AniSDF (zoom)</p>
+        <video
+          src="videos/helmet/anisdf_zoom.mp4"
+          data-scene="helmet"
+          preload="auto"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+    </div>
+
+    <br>
+
+    <!-- Dishes: full view -->
+    <div class="video-grid">
+      <div class="video-cell">
+        <p class="video-caption">GT</p>
+        <video
+          src="videos/dishes/gt.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">ShinyNeRF</p>
+        <video
+          src="videos/dishes/shinynerf.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">Spec-Gaussian</p>
+        <video
+          src="videos/dishes/specgaussian.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">AniSDF</p>
+        <video
+          src="videos/dishes/anisdf.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+    </div>
+
+    <!-- Dishes: zoomed crops -->
+    <div class="video-grid video-grid-zoom">
+      <div class="video-cell">
+        <p class="video-caption">GT (zoom)</p>
+        <video
+          src="videos/dishes/gt_zoom.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">ShinyNeRF (zoom)</p>
+        <video
+          src="videos/dishes/shinynerf_zoom.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">Spec-Gaussian (zoom)</p>
+        <video
+          src="videos/dishes/specgaussian_zoom.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+
+      <div class="video-cell">
+        <p class="video-caption">AniSDF (zoom)</p>
+        <video
+          src="videos/dishes/anisdf_zoom.mp4"
+          data-scene="dishes"
+          autoplay
+          muted
+          playsinline
+        ></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- COMPARING METHODS (TEAPOT GRID) -->
+<section class="hero is-light is-small" id="comparison">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="content has-text-justified">
+        <h3 class="title is-3 is-centered has-text-centered">Comparing methods</h3>
+      </div>
+
+      <div class="comparison-grid">
+        <!-- GT column -->
+        <div class="comparison-column">
+          <div class="comparison-header">GT</div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/rgb_gt.png" alt="GT RGB" class="zoom-sync">
+            </div>
+          </div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/normal_gt.png" alt="GT Normals" class="zoom-sync">
+            </div>
+          </div>
+        </div>
+
+        <!-- ShinyNeRF column -->
+        <div class="comparison-column">
+          <div class="comparison-header">ShinyNeRF (ours)</div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/rgb_shinynerf.png" alt="ShinyNeRF RGB" class="zoom-sync">
+            </div>
+          </div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/normal_shinynerf.png" alt="ShinyNeRF Normals" class="zoom-sync">
+            </div>
+          </div>
+        </div>
+
+        <!-- AniSDF column -->
+        <div class="comparison-column">
+          <div class="comparison-header">AniSDF</div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/rgb_anisdf.png" alt="AniSDF RGB" class="zoom-sync">
+            </div>
+          </div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/normal_anisdf.png" alt="AniSDF Normals" class="zoom-sync">
+            </div>
+          </div>
+        </div>
+
+        <!-- Spec-Gaussian column -->
+        <div class="comparison-column">
+          <div class="comparison-header">Spec-Gaussian</div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/rgb_spec.png" alt="Spec-Gaussian RGB" class="zoom-sync">
+            </div>
+          </div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/normal_spec.png" alt="Spec-Gaussian Normals" class="zoom-sync">
+            </div>
+          </div>
+        </div>
+
+        <!-- Ref-NeRF column -->
+        <div class="comparison-column">
+          <div class="comparison-header">Ref-NeRF</div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/rgb_refnerf.png" alt="Ref-NeRF RGB" class="zoom-sync">
+            </div>
+          </div>
+          <div class="comparison-cell">
+            <div class="zoom-container">
+              <img src="images/teapot/normal_refnerf.png" alt="Ref-NeRF Normals" class="zoom-sync">
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PARAMETER ESTIMATION -->
+<section class="section" id="param-estimation">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">Parameter estimation</h2>
+
+    <div class="param-matrix-row">
+      <!-- First panel: with column + row labels -->
+      <figure class="param-matrix">
+        <img
+          src="images/estimate_param/estim_param.png"
+          alt="Estimated parameters: RGB, tangent, anisotropy, concentration"
+        >
+
+        <!-- Column labels (top) -->
+        <div class="param-col-label param-col-1">RGB rendering</div>
+        <div class="param-col-label param-col-2">Tangent t̂</div>
+        <div class="param-col-label param-col-3">Anisotropy <i>e</i></div>
+        <div class="param-col-label param-col-4">Concentration &kappa;</div>
+
+        <!-- Row labels (left) -->
+        <div class="param-row-label param-row-1">Predicted</div>
+        <div class="param-row-label param-row-2">GT</div>
+      </figure>
+
+      <!-- Second panel: with row labels and repeated column labels -->
+      <figure class="param-matrix">
+        <img
+          src="images/estimate_param/estimation_parameters_ani_2.png"
+          alt="Additional anisotropic parameter estimations"
+        >
+
+        <!-- Column labels (same positions as the first panel) -->
+        <div class="param-col-label param-col-1">RGB rendering</div>
+        <div class="param-col-label param-col-2">Tangent t̂</div>
+        <div class="param-col-label param-col-3">Anisotropy <i>e</i></div>
+        <div class="param-col-label param-col-4">Concentration &kappa;</div>
+
+        <!-- Row labels (left) -->
+        <div class="param-row-label param-row-1">Predicted</div>
+        <div class="param-row-label param-row-2">GT</div>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PARAMETER EXPLORER -->
+<section class="section" id="explorer">
+  <div class="container is-max-desktop">
+    <h2 class="title is-4 has-text-centered">ShinyNeRF parameter explorer</h2>
+
+    <div class="param-explorer">
+      <!-- Left: sliders -->
+      <div class="param-controls">
+        <!-- κ slider -->
+        <div class="param-row">
+          <div class="param-label">
+            <span>Concentration &kappa;</span>
+            <span class="param-value" id="kappa-value"></span>
+          </div>
+          <input
+            id="kappa-slider"
+            type="range"
+            min="0"
+            max="7"
+            step="1"
+          >
+        </div>
+
+        <!-- e slider -->
+        <div class="param-row">
+          <div class="param-label">
+            <span>Eccentricity e</span>
+            <span class="param-value" id="e-value"></span>
+          </div>
+          <input
+            id="e-slider"
+            type="range"
+            min="0"
+            max="4"
+            step="1"
+          >
+        </div>
+
+        <!-- angle slider -->
+        <div class="param-row">
+          <div class="param-label">
+            <span>Tangent orientation &phi;</span>
+            <span class="param-value" id="angle-value"></span>
+          </div>
+          <input
+            id="angle-slider"
+            type="range"
+            min="0"
+            max="4"
+            step="1"
+          >
+        </div>
+      </div>
+
+      <!-- Right: image -->
+      <div class="param-preview">
+        <figure>
+          <img
+            id="param-image"
+            src="images/slider_images/image10-1.0-0.png"
+            alt="Parameter visualization"
+          >
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- RELATED WORK (compact) -->
+<section class="section" id="related-work">
+  <div class="container is-max-desktop">
+    <h2 class="title is-5 has-text-centered">Related work</h2>
+      <p class="has-text-centered related-inline">
+        <a class="ref-pill"
+          href="https://arxiv.org/abs/2112.03907"
+          target="_blank" rel="noopener noreferrer">
+          Ref-NeRF (Verbin et al., 2022)
+        </a>
+
+        <span class="ref-sep" aria-hidden="true">•</span>
+
+        <a class="ref-pill"
+          href="https://arxiv.org/abs/2402.15870"
+          target="_blank" rel="noopener noreferrer">
+          Spec-Gaussian (Yang et al., 2024)
+        </a>
+
+        <span class="ref-sep" aria-hidden="true">•</span>
+
+        <a class="ref-pill"
+          href="https://proceedings.iclr.cc/paper_files/paper/2025/hash/9a6f6e0d6781d1cb8689192408946d73-Abstract-Conference.html"
+          target="_blank" rel="noopener noreferrer">
+          AniSDF (Gao et al., 2025)
+        </a>
+      </p>
+  </div>
+</section>
+
+
+<!-- BIBTEX -->
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title is-4 has-text-centered">BibTeX</h2>
+
+    <div class="bibtex-block">
+      <button class="button is-small is-light bibtex-copy-btn" type="button" aria-label="Copy BibTeX">
+        <span class="icon is-small"><i class="far fa-copy"></i></span>
+        <span>Copy</span>
+      </button>
+
+      <pre><code id="bibtex-code">
+@Article{Barreiro2025ShinyNeRF,
+  author    = {Barreiro, Albert and Mar\'{i}, Roger and Redondo, Rafael and Haro, Gloria and Bosch, Carles},
+  title     = {{ShinyNeRF}: Modeling Anisotropic Reflections in Neural Radiance Fields},
+  journal   = {The International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences},
+  year      = {2026}
+}
+      </code></pre>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="license">
+  <div class="container is-max-desktop">
+    <div class="content has-text-centered">
+      <p>
+        This website is licensed under a
+        <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+        This webpage template is from
+        <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
+        We thank <a href="https://keunhong.com/">Keunhong Park</a> for developing this template and making it open source.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Image zoom modal (shared for all comparison images) -->
+<div id="comparison-modal" class="comparison-modal">
+  <div class="comparison-modal-backdrop"></div>
+  <div class="comparison-modal-content">
+    <button class="comparison-modal-close" aria-label="Close">&times;</button>
+    <img src="" alt="" id="comparison-modal-image">
+    <p class="comparison-modal-caption" id="comparison-modal-caption"></p>
+  </div>
+</div>
+
+</body>
+</html>
