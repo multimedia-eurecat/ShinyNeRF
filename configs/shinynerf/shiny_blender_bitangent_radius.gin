@@ -1,7 +1,7 @@
 ### Shiny Blender Specific Arguments
 # ASG2vMF
 run.dataset_name = "shiny_blender_bitangent_radius"
-run.datadir = "/media/ssd/nerfstudio/data/shinyblender_bitangent"
+run.datadir = "/data/shinyblender_bitangent"
 
 
 
