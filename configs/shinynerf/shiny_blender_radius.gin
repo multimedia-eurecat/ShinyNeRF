@@ -1,0 +1,27 @@
+### Shiny Blender Specific Arguments
+# ASG2vMF
+run.dataset_name = "shiny_blender_radius"
+run.datadir = "/data/shinyblender_bitangent"
+
+
+
+LitData.batch_sampler = "all_images"
+LitDataShinyBlenderNoNorm.white_bkgd = True
+
+### RefNeRF Standard Specific Arguments
+
+run.model_name = "shinynerf"
+run.max_steps = 1000000
+run.log_every_n_steps = 100
+
+LitData.load_radii = True
+LitData.batch_size = 6000
+LitData.chunk = 1024
+LitData.use_pixel_centers = True
+
+
+
+LitShinyNeRF.compute_normal_metrics = True
+LitShinyNeRF.compute_bitangent_metrics = True
+
+ShinyNeRFMLP.bottleneck_noise = 0.1

@@ -1,0 +1,20 @@
+### Shiny Blender Specific Arguments
+
+run.dataset_name = "shiny_blender"
+run.datadir = "data/shinyblender"
+
+LitData.batch_sampler = "all_images"
+LitDataShinyBlenderNoNorm.white_bkgd = True
+
+### RefNeRF Standard Specific Arguments
+
+run.model_name = "refnerf"
+run.max_steps = 1000000
+run.log_every_n_steps = 100
+
+LitData.load_radii = True
+LitData.batch_size = 3000
+LitData.chunk = 8192
+LitData.use_pixel_centers = True
+
+LitRefNeRF.compute_normal_metrics = True

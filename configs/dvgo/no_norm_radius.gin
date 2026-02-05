@@ -1,0 +1,19 @@
+### Shiny Blender Specific Arguments
+
+run.dataset_name = "shiny_blender_no_norm_radius"
+run.datadir = "data/no_norm"
+
+LitData.batch_sampler = "all_images"
+LitDataShinyBlenderNoNorm.white_bkgd = True
+LitData.num_workers = 12
+
+### TRefNeRF Standard Specific Arguments
+
+run.model_name = "dvgo"
+run.max_steps = 1000000
+run.log_every_n_steps = 100
+
+LitData.load_radii = True
+LitData.batch_size = 3000
+LitData.chunk = 8192
+LitData.use_pixel_centers = True
